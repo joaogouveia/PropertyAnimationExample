@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/alpha"
+            android:checked="false"
+            android:title="@string/alpha" />
+
+        <item
+            android:id="@+id/translation"
+            android:checked="false"
+            android:title="@string/translation" />
+
+        <item
+            android:id="@+id/rotation"
+            android:checked="false"
+            android:title="@string/rotation" />
+
+        <item
+            android:id="@+id/scale"
+            android:checked="false"
+            android:title="@string/scale" />
+
+
+        <item
+            android:id="@+id/pivot_rotation"
+            android:checked="false"
+            android:title="@string/pivot_rotation" />
+
+    </group>
+</menu>
