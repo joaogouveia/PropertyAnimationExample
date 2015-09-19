@@ -1,5 +1,6 @@
 package com.github.joaogouveia.propertyanimationexample.fragment;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.github.joaogouveia.propertyanimationexample.R;
+import com.github.joaogouveia.propertyanimationexample.util.SimpleAnimatorListener;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -48,14 +50,14 @@ public class RotationFragment extends Fragment {
     }
 
     @OnClick(R.id.button)
-    void run(){
-        AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animRotationIn = ObjectAnimator.ofFloat(view, "rotation", 0f, 180f);
-        ObjectAnimator animRotationOut = ObjectAnimator.ofFloat(view, "rotation", 180f, 0f);
-        animatorSet.playSequentially(animRotationIn, animRotationOut);
-        animatorSet.setDuration(1000);
-        animatorSet.setInterpolator(new FastOutSlowInInterpolator());
-        animatorSet.start();
+    void run() {
+
+        view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).rotation(180f).setListener(new SimpleAnimatorListener() {
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).rotation(0f);
+            }
+        });
     }
 
 
