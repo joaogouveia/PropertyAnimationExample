@@ -48,6 +48,7 @@ public class TranslationFragment extends Fragment {
     @OnClick(R.id.button)
     void run() {
 
+        //.withEndAction e .withStartAction podem ser usados em caso de API 16+
         view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).translationX(200).translationY(200).setListener(new SimpleAnimatorListener() {
             @Override
             public void onAnimationEnd(Animator animator) {

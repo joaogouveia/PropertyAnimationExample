@@ -21,10 +21,6 @@ public class ScaleFragment extends Fragment {
     @Bind(R.id.view)
     View view;
 
-    @Bind(R.id.button)
-    Button button;
-
-
     public static ScaleFragment newInstance() {
         ScaleFragment fragment = new ScaleFragment();
         return fragment;

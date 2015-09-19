@@ -24,10 +24,6 @@ public class AlphaFragment extends Fragment {
     @Bind(R.id.view)
     View view;
 
-    @Bind(R.id.button)
-    Button button;
-
-
     public static AlphaFragment newInstance() {
         AlphaFragment fragment = new AlphaFragment();
         return fragment;
@@ -52,7 +48,6 @@ public class AlphaFragment extends Fragment {
 
     @OnClick(R.id.button)
     void run() {
-
         //.withEndAction e .withStartAction podem ser usados em caso de API 16+
         view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).alpha(0f).setListener(new SimpleAnimatorListener() {
             @Override

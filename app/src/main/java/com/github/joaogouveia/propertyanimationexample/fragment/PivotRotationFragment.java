@@ -21,10 +21,6 @@ public class PivotRotationFragment extends Fragment {
     @Bind(R.id.view)
     View view;
 
-    @Bind(R.id.button)
-    Button button;
-
-
     public static PivotRotationFragment newInstance() {
         PivotRotationFragment fragment = new PivotRotationFragment();
         return fragment;

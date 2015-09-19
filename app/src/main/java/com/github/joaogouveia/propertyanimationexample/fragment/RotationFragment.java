@@ -23,10 +23,6 @@ public class RotationFragment extends Fragment {
     @Bind(R.id.view)
     View view;
 
-    @Bind(R.id.button)
-    Button button;
-
-
     public static RotationFragment newInstance() {
         RotationFragment fragment = new RotationFragment();
         return fragment;
@@ -52,6 +48,7 @@ public class RotationFragment extends Fragment {
     @OnClick(R.id.button)
     void run() {
 
+        //.withEndAction e .withStartAction podem ser usados em caso de API 16+
         view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).rotation(180f).setListener(new SimpleAnimatorListener() {
             @Override
             public void onAnimationEnd(Animator animator) {
