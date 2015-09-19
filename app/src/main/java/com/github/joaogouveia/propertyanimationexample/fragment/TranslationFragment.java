@@ -1,5 +1,6 @@
 package com.github.joaogouveia.propertyanimationexample.fragment;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.github.joaogouveia.propertyanimationexample.R;
+import com.github.joaogouveia.propertyanimationexample.util.SimpleAnimatorListener;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,10 +22,6 @@ public class TranslationFragment extends Fragment {
 
     @Bind(R.id.view)
     View view;
-
-    @Bind(R.id.button)
-    Button button;
-
 
     public static TranslationFragment newInstance() {
         TranslationFragment fragment = new TranslationFragment();
@@ -48,17 +46,14 @@ public class TranslationFragment extends Fragment {
     }
 
     @OnClick(R.id.button)
-    void run(){
-        AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animTranslationXIn = ObjectAnimator.ofFloat(view, "translationX", 200);
-        ObjectAnimator animTranslationXOut = ObjectAnimator.ofFloat(view, "translationX", 0);
-        animatorSet.playSequentially(animTranslationXIn, animTranslationXOut);
-        ObjectAnimator animTranslationYIn = ObjectAnimator.ofFloat(view, "translationY", 200);
-        ObjectAnimator animTranslationYOut = ObjectAnimator.ofFloat(view, "translationY", 0);
-        animatorSet.playSequentially(animTranslationYIn, animTranslationYOut);
-        animatorSet.setDuration(1000);
-        animatorSet.setInterpolator(new FastOutSlowInInterpolator());
-        animatorSet.start();
+    void run() {
+
+        view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).translationX(200).translationY(200).setListener(new SimpleAnimatorListener() {
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).translationX(0).translationY(0);
+            }
+        });
     }
 
 
