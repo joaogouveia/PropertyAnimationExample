@@ -1,5 +1,6 @@
 package com.github.joaogouveia.propertyanimationexample.fragment;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.github.joaogouveia.propertyanimationexample.R;
+import com.github.joaogouveia.propertyanimationexample.util.SimpleAnimatorListener;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -45,19 +47,17 @@ public class PivotRotationFragment extends Fragment {
 
     @OnClick(R.id.button)
     void run(){
-        AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animPivotXIn = ObjectAnimator.ofFloat(view, "pivotX", 0f);
-        ObjectAnimator animPivotXOut = ObjectAnimator.ofFloat(view, "pivotX", 50f);
-        animatorSet.playSequentially(animPivotXIn, animPivotXOut);
-        ObjectAnimator animPivotYIn = ObjectAnimator.ofFloat(view, "pivotY", 0f);
-        ObjectAnimator animPivotYOut = ObjectAnimator.ofFloat(view, "pivotY", 50f);
-        animatorSet.playSequentially(animPivotYIn, animPivotYOut);
-        ObjectAnimator animRotationIn = ObjectAnimator.ofFloat(view, "rotation", 0f, 180f);
-        ObjectAnimator animRotationOut = ObjectAnimator.ofFloat(view, "rotation", 180f, 0f);
-        animatorSet.playSequentially(animRotationIn, animRotationOut);
-        animatorSet.setDuration(1000);
-        animatorSet.setInterpolator(new FastOutSlowInInterpolator());
-        animatorSet.start();
+
+        view.setPivotX(0f);
+        view.setPivotY(0f);
+        //.withEndAction e .withStartAction podem ser usados em caso de API 16+
+        view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).rotation(180f).setListener(new SimpleAnimatorListener() {
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).rotation(0f);
+            }
+        });
+
     }
 
 
