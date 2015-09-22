@@ -1,16 +1,15 @@
 package com.github.joaogouveia.propertyanimationexample.fragment;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
+import android.animation.Animator;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.github.joaogouveia.propertyanimationexample.R;
+import com.github.joaogouveia.propertyanimationexample.util.SimpleAnimatorListener;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -45,16 +44,14 @@ public class ScaleFragment extends Fragment {
 
     @OnClick(R.id.button)
     void run() {
-        AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animScaleXIn = ObjectAnimator.ofFloat(view, "scaleX", 2f);
-        ObjectAnimator animScaleXOut = ObjectAnimator.ofFloat(view, "scaleX", 1f);
-        animatorSet.playSequentially(animScaleXIn, animScaleXOut);
-        ObjectAnimator animScaleYIn = ObjectAnimator.ofFloat(view, "scaleY", 0.5f);
-        ObjectAnimator animScaleYOut = ObjectAnimator.ofFloat(view, "scaleY", 1f);
-        animatorSet.playSequentially(animScaleYIn, animScaleYOut);
-        animatorSet.setDuration(1000);
-        animatorSet.setInterpolator(new FastOutSlowInInterpolator());
-        animatorSet.start();
+
+        //.withEndAction e .withStartAction podem ser usados em caso de API 16+
+        view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).scaleY(0.5f).scaleX(2f).setListener(new SimpleAnimatorListener() {
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).scaleX(1f).scaleY(1f);
+            }
+        });
     }
 
 
