@@ -46,17 +46,24 @@ public class PivotRotationFragment extends Fragment {
     }
 
     @OnClick(R.id.button)
-    void run(){
+    void run() {
 
         view.setPivotX(0f);
         view.setPivotY(0f);
         //.withEndAction e .withStartAction podem ser usados em caso de API 16+
-        view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).rotation(180f).setListener(new SimpleAnimatorListener() {
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).rotation(0f);
-            }
-        });
+        view.animate()
+                .setInterpolator(new FastOutSlowInInterpolator())
+                .setDuration(1000)
+                .rotation(180f)
+                .setListener(new SimpleAnimatorListener() {
+                    @Override
+                    public void onAnimationEnd(Animator animator) {
+                        view.animate()
+                                .setInterpolator(new FastOutSlowInInterpolator())
+                                .setDuration(1000)
+                                .rotation(0f);
+                    }
+                });
 
     }
 

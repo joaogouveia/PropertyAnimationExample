@@ -46,12 +46,21 @@ public class ScaleFragment extends Fragment {
     void run() {
 
         //.withEndAction e .withStartAction podem ser usados em caso de API 16+
-        view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).scaleY(0.5f).scaleX(2f).setListener(new SimpleAnimatorListener() {
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).scaleX(1f).scaleY(1f);
-            }
-        });
+        view.animate()
+                .setInterpolator(new FastOutSlowInInterpolator())
+                .setDuration(1000)
+                .scaleY(0.5f)
+                .scaleX(2f)
+                .setListener(new SimpleAnimatorListener() {
+                    @Override
+                    public void onAnimationEnd(Animator animator) {
+                        view.animate()
+                                .setInterpolator(new FastOutSlowInInterpolator())
+                                .setDuration(1000)
+                                .scaleX(1f)
+                                .scaleY(1f);
+                    }
+                });
     }
 
 

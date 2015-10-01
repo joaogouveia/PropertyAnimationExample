@@ -49,12 +49,19 @@ public class AlphaFragment extends Fragment {
     @OnClick(R.id.button)
     void run() {
         //.withEndAction e .withStartAction podem ser usados em caso de API 16+
-        view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).alpha(0f).setListener(new SimpleAnimatorListener() {
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).alpha(1f);
-            }
-        });
+        view.animate()
+                .setInterpolator(new FastOutSlowInInterpolator())
+                .setDuration(1000)
+                .alpha(0f)
+                .setListener(new SimpleAnimatorListener() {
+                    @Override
+                    public void onAnimationEnd(Animator animator) {
+                        view.animate()
+                                .setInterpolator(new FastOutSlowInInterpolator())
+                                .setDuration(1000)
+                                .alpha(1f);
+                    }
+                });
     }
 
 

@@ -49,12 +49,19 @@ public class RotationFragment extends Fragment {
     void run() {
 
         //.withEndAction e .withStartAction podem ser usados em caso de API 16+
-        view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).rotation(180f).setListener(new SimpleAnimatorListener() {
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                view.animate().setInterpolator(new FastOutSlowInInterpolator()).setDuration(1000).rotation(0f);
-            }
-        });
+        view.animate()
+                .setInterpolator(new FastOutSlowInInterpolator())
+                .setDuration(1000)
+                .rotation(180f)
+                .setListener(new SimpleAnimatorListener() {
+                    @Override
+                    public void onAnimationEnd(Animator animator) {
+                        view.animate()
+                                .setInterpolator(new FastOutSlowInInterpolator())
+                                .setDuration(1000)
+                                .rotation(0f);
+                    }
+                });
     }
 
 
