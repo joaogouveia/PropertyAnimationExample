@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.github.joaogouveia.propertyanimationexample.R;
 import com.github.joaogouveia.propertyanimationexample.fragment.AlphaFragment;
+import com.github.joaogouveia.propertyanimationexample.fragment.ColorFragment;
 import com.github.joaogouveia.propertyanimationexample.fragment.PivotRotationFragment;
 import com.github.joaogouveia.propertyanimationexample.fragment.RotationFragment;
 import com.github.joaogouveia.propertyanimationexample.fragment.ScaleFragment;
@@ -75,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.pivot_rotation:
                         setFragment(PivotRotationFragment.newInstance());
                         toolbar.setTitle("Pivot + Rotation");
+                        return true;
+                    case R.id.color:
+                        setFragment(ColorFragment.newInstance());
+                        toolbar.setTitle("Color");
                         return true;
                     default:
                         Toast.makeText(getApplicationContext(), "Somethings Wrong", Toast.LENGTH_SHORT).show();

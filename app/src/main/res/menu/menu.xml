@@ -29,5 +29,10 @@
             android:checked="false"
             android:title="@string/pivot_rotation" />
 
+        <item
+            android:id="@+id/color"
+            android:checked="false"
+            android:title="@string/color" />
+
     </group>
 </menu>

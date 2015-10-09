@@ -48,6 +48,14 @@ public class RotationFragment extends Fragment {
     @OnClick(R.id.button)
     void run() {
 
+//        AnimatorSet animatorSet = new AnimatorSet();
+//        ObjectAnimator animRotationIn = ObjectAnimator.ofFloat(view, "rotation", 0f, 180f);
+//        ObjectAnimator animRotationOut = ObjectAnimator.ofFloat(view, "rotation", 180f, 0f);
+//        animatorSet.playSequentially(animRotationIn, animRotationOut);
+//        animatorSet.setDuration(1000);
+//        animatorSet.setInterpolator(new FastOutSlowInInterpolator());
+//        animatorSet.start();
+
         //.withEndAction e .withStartAction podem ser usados em caso de API 16+
         view.animate()
                 .setInterpolator(new FastOutSlowInInterpolator())
