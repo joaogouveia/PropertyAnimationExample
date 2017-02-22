@@ -16,4 +16,5 @@
     <string name="openDrawer">open drawer</string>
     <string name="closeDrawer">close drawer</string>
     <string name="color">color</string>
+    <string name="custom">custom</string>
 </resources>

@@ -34,5 +34,10 @@
             android:checked="false"
             android:title="@string/color" />
 
+        <item
+            android:id="@+id/custom"
+            android:checked="false"
+            android:title="@string/custom" />
+
     </group>
 </menu>

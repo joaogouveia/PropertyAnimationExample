@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.transition.TransitionManager;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,19 +50,22 @@ public class AlphaFragment extends Fragment {
     @OnClick(R.id.button)
     void run() {
         //.withEndAction e .withStartAction podem ser usados em caso de API 16+
-        view.animate()
-                .setInterpolator(new FastOutSlowInInterpolator())
-                .setDuration(1000)
-                .alpha(0f)
-                .setListener(new SimpleAnimatorListener() {
-                    @Override
-                    public void onAnimationEnd(Animator animator) {
-                        view.animate()
-                                .setInterpolator(new FastOutSlowInInterpolator())
-                                .setDuration(1000)
-                                .alpha(1f);
-                    }
-                });
+//        view.animate()
+//                .setInterpolator(new FastOutSlowInInterpolator())
+//                .setDuration(1000)
+//                .alpha(0f)
+//                .setListener(new SimpleAnimatorListener() {
+//                    @Override
+//                    public void onAnimationEnd(Animator animator) {
+//                        view.animate()
+//                                .setInterpolator(new FastOutSlowInInterpolator())
+//                                .setDuration(1000)
+//                                .alpha(1f);
+//                    }
+//                });
+
+        TransitionManager.beginDelayedTransition((ViewGroup) view.getParent());
+        view.setVisibility(view.getVisibility() == View.GONE?View.VISIBLE:View.GONE);
     }
 
 

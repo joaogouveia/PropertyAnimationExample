@@ -2,6 +2,7 @@ package com.github.joaogouveia.propertyanimationexample.fragment;
 
 import android.animation.Animator;
 import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Fragment;
 import android.graphics.Color;
@@ -56,17 +57,19 @@ public class ColorFragment extends Fragment {
 
     private void animateColorChange(int newColor) {
         Integer colorFrom = ((ColorDrawable) view.getBackground()).getColor();
-        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, newColor);
-        colorAnimation.setDuration(300);
-        colorAnimation.setInterpolator(new FastOutSlowInInterpolator());
-        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animator) {
-                view.setBackgroundColor((Integer) animator.getAnimatedValue());
-            }
+//        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, newColor);
+//        colorAnimation.setDuration(300);
+//        colorAnimation.setInterpolator(new FastOutSlowInInterpolator());
+//        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animator) {
+//                view.setBackgroundColor((Integer) animator.getAnimatedValue());
+//            }
+//
+//        });
+//        colorAnimation.start();
 
-        });
-        colorAnimation.start();
+        ObjectAnimator.ofArgb(view, "backgroundColor", colorFrom, getRandomColor()).start();
     }
 
     private int getRandomColor(){
